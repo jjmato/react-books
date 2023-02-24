@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "server": "json-server -p 3001 --watch db.json",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint ./src/**/*.(js|jsx) --fix"
   },
   "dependencies": {
+    "json-server": "^0.17.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
