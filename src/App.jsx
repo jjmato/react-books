@@ -4,7 +4,7 @@ import './App.css'
 import BookCreate from './components/BookCreate'
 import BooksList from './components/BooksList'
 
-const API_BOOKS_ENDPOINT = 'http://127.0.0.1:3001/books'
+const API_BOOKS_ENDPOINT = 'http://localhost:3001/books'
 const fetchBooks = async () => await fetch(API_BOOKS_ENDPOINT).then(resp => resp.json())
 
 function App () {
@@ -16,8 +16,14 @@ function App () {
   }, [])
 
   const createBook = async (title) => {
-    const response = await fetch(API_BOOKS_ENDPOINT, { method: 'POST' })
-    const bookRecorded = response.json()
+    const response = await fetch(API_BOOKS_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title })
+    })
+    const bookRecorded = await response.json()
 
     setBooks([...books, bookRecorded])
   }
