@@ -16,10 +16,14 @@ function App () {
     setBooks(books.filter(({ id }) => id !== idForDelete))
   }
 
+  const editBook = ({ id, newTitle }) => {
+    setBooks(books.map(book => book.id === id ? { ...book, title: newTitle } : { ...book }))
+  }
+
   return (
     <main>
       <h1 className='title'>📚 Books... </h1>
-      <BooksList books={books} onDelete={deleteBooks} />
+      <BooksList books={books} onDelete={deleteBooks} onEdit={editBook}/>
       <BookCreate onCreate={createBook} />
 
     </main>
