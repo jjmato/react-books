@@ -4,12 +4,16 @@ import './App.css'
 import BookCreate from './components/BookCreate'
 import BooksList from './components/BooksList'
 
+const API_BOOKS_ENDPOINT = 'http://127.0.0.1:3001/books'
+
 function App () {
   const [books, setBooks] = useState([])
 
-  const createBook = (title) => {
-    const id = Math.round(Math.random() * 9999)
-    setBooks([...books, { id, title }])
+  const createBook = async (title) => {
+    const response = await fetch(API_BOOKS_ENDPOINT, { method: 'POST' })
+    const bookRecorded = response.json()
+
+    setBooks([...books, bookRecorded])
   }
 
   const deleteBooks = (idForDelete) => {
