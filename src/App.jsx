@@ -23,7 +23,7 @@ function App () {
   return (
     <main>
       <h1 className='title'>📚 Books... </h1>
-      <BooksList books={books} onDelete={deleteBooks} onEdit={editBook}/>
+      <BooksList books={books} onDelete={deleteBooks} onEdit={editBook} />
       <BookCreate onCreate={createBook} />
 
     </main>
