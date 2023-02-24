@@ -12,10 +12,14 @@ function App () {
     setBooks([...books, { id, title }])
   }
 
+  const deleteBooks = (idForDelete) => {
+    setBooks(books.filter(({ id }) => id !== idForDelete))
+  }
+
   return (
     <main>
-      <h1>📚 Books... </h1>
-      <BooksList books={books} />
+      <h1 className='title'>📚 Books... </h1>
+      <BooksList books={books} onDelete={deleteBooks} />
       <BookCreate onCreate={createBook} />
 
     </main>
