@@ -7,7 +7,8 @@ function App () {
   const [books, setBooks] = useState([])
 
   const createBook = (title) => {
-    setBooks([...books, { title }])
+    const id = Math.round(Math.random() * 9999)
+    setBooks([...books, { id, title }])
   }
 
   return (
@@ -16,7 +17,7 @@ function App () {
       <BookCreate onCreate={createBook} />
 
       <ul>
-        {books.map((book, index) => <li key={index}>{book.title}</li>)}
+        {books.map((book) => <li key={book.id}>{book.title}</li>)}
       </ul>
 
     </main>
