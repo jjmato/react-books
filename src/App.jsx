@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 import BookCreate from './components/BookCreate'
+import BookShow from './components/BookShow'
 
 function App () {
   const [books, setBooks] = useState([])
@@ -17,7 +18,7 @@ function App () {
       <BookCreate onCreate={createBook} />
 
       <ul>
-        {books.map((book) => <li key={book.id}>{book.title}</li>)}
+        {books.map((book) => <BookShow key={book.id} {...book} />)}
       </ul>
 
     </main>
